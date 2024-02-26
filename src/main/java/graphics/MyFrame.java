@@ -4,14 +4,14 @@
  */
 package graphics;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class MyFrame extends JFrame {
     MyButton b1, b2, b3 ;
     String a, b, c;
-    JLabel north; 
+    JPanel north; 
     JLabel south;
     public MyFrame(){
         a = "Moi";
@@ -29,14 +29,13 @@ public class MyFrame extends JFrame {
         b1= new MyButton(Color.PINK, a);
         b2= new MyButton(Color.BLUE, b);
         b3= new MyButton(Color.GREEN, c);
-        north = new JLabel();
+        north = new JPanel();
         south = new JLabel();
         initGui();
         
         this.pack();
         //centrer fenêtre
         this.setLocationRelativeTo(null);
-        
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -44,37 +43,24 @@ public class MyFrame extends JFrame {
 
     private void initGui() {
         north.setLayout(new BoxLayout(north, BoxLayout.LINE_AXIS));
-        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.LINE_AXIS));
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         north.add(b1);
         north.add(b2);
         north.add(b3);
+        south.setPreferredSize(new Dimension(60, 20));
         this.add(north);
-        this.add(south);
-        this.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        
+        north.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
        
         b1.addActionListener((ActionEvent ae) -> {
-            JOptionPane.showMessageDialog(
-                null, 
-                "Vous avez cliqué sur " + a , 
-                "Alerte !", 
-                JOptionPane.ERROR_MESSAGE
-            );
+            south.setText(a);
         });
         b2.addActionListener((ActionEvent ae) -> {
-           JOptionPane.showMessageDialog(
-               null, 
-               "Vous avez cliqué sur " + b , 
-               "Alerte !", 
-               JOptionPane.ERROR_MESSAGE
-            );
+            south.setText(b);
         });
         b3.addActionListener((ActionEvent ae) -> {
-          JOptionPane.showMessageDialog(
-              null, 
-              "Vous avez cliqué sur " + c , 
-               "Alerte !", 
-               JOptionPane.ERROR_MESSAGE
-            );
+           south.setText(c);
         });
+        this.add(south);
     }
 }
