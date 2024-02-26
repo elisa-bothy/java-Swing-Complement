@@ -21,16 +21,16 @@ public class MyFrame extends JFrame {
     MyButton b1, b2, b3 ;
     String a, b, c;
     JPanel north; 
-    JLabel south;
+    JPanel south;
     public MyFrame(){
-        a = "Moi";
-        b ="Toi";
-        c = "Lui";
-        b1= new MyButton(Color.PINK, a);
-        b2= new MyButton(Color.BLUE, b);
+        a = "ROUGE";
+        b ="VERT";
+        c = "BLEU";
+        b1= new MyButton(Color.BLUE, a);
+        b2= new MyButton(Color.RED, b);
         b3= new MyButton(Color.GREEN, c);
         north = new JPanel();
-        south = new JLabel();
+        south = new JPanel();
         initGui();
         
         this.pack();
@@ -47,19 +47,19 @@ public class MyFrame extends JFrame {
         north.add(b1);
         north.add(b2);
         north.add(b3);
-        south.setPreferredSize(new Dimension(60, 20));
+        south.setPreferredSize(new Dimension(200, 400));
+        south.setOpaque(true);
         this.add(north);
         
         north.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-       
         b1.addActionListener((ActionEvent ae) -> {
-            south.setText(a + " !");
+            south.setBackground(Color.RED);
         });
         b2.addActionListener((ActionEvent ae) -> {
-            south.setText(b + " !");
+            south.setBackground(Color.GREEN);
         });
         b3.addActionListener((ActionEvent ae) -> {
-           south.setText(c + " !");
+           south.setBackground(Color.BLUE);
         });
         this.add(south);
     }
