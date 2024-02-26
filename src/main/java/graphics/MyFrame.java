@@ -4,7 +4,9 @@
  */
 package graphics;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -19,6 +21,7 @@ public class MyFrame extends JFrame {
     MyButton b1, b2, b3 ;
     String a, b, c;
     JLabel north; 
+    JLabel south;
     public MyFrame(){
         a = "Moi";
         b ="Toi";
@@ -27,6 +30,7 @@ public class MyFrame extends JFrame {
         b2= new MyButton(Color.BLUE, b);
         b3= new MyButton(Color.GREEN, c);
         north = new JLabel();
+        south = new JLabel();
         initGui();
         
         this.pack();
@@ -41,9 +45,12 @@ public class MyFrame extends JFrame {
     private void initGui() {
         north.setLayout(new BoxLayout(north, BoxLayout.LINE_AXIS));
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.LINE_AXIS));
-        this.add(b1);
-        this.add(b2);
-        this.add(b3);
+        north.add(b1);
+        north.add(b2);
+        north.add(b3);
+        this.add(north);
+        this.add(south);
+        this.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
        
         b1.addActionListener((ActionEvent ae) -> {
             JOptionPane.showMessageDialog(
@@ -51,7 +58,7 @@ public class MyFrame extends JFrame {
                 "Vous avez cliqué sur " + a , 
                 "Alerte !", 
                 JOptionPane.ERROR_MESSAGE
-        );
+            );
         });
         b2.addActionListener((ActionEvent ae) -> {
            JOptionPane.showMessageDialog(
@@ -59,7 +66,7 @@ public class MyFrame extends JFrame {
                "Vous avez cliqué sur " + b , 
                "Alerte !", 
                JOptionPane.ERROR_MESSAGE
-        );
+            );
         });
         b3.addActionListener((ActionEvent ae) -> {
           JOptionPane.showMessageDialog(
@@ -67,7 +74,7 @@ public class MyFrame extends JFrame {
               "Vous avez cliqué sur " + c , 
                "Alerte !", 
                JOptionPane.ERROR_MESSAGE
-        );
+            );
         });
     }
 }
