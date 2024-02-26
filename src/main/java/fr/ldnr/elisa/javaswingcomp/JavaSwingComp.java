@@ -5,6 +5,8 @@
 
 package fr.ldnr.elisa.javaswingcomp;
 
+import graphics.MyFrame;
+
 /**
  *
  * @author Elisa Bothy
@@ -12,6 +14,6 @@ package fr.ldnr.elisa.javaswingcomp;
 public class JavaSwingComp {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        MyFrame mf = new MyFrame();
     }
 }
