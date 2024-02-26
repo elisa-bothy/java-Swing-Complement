@@ -53,13 +53,13 @@ public class MyFrame extends JFrame {
         north.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
        
         b1.addActionListener((ActionEvent ae) -> {
-            south.setText(a);
+            south.setText(a + " !");
         });
         b2.addActionListener((ActionEvent ae) -> {
-            south.setText(b);
+            south.setText(b + " !");
         });
         b3.addActionListener((ActionEvent ae) -> {
-           south.setText(c);
+           south.setText(c + " !");
         });
         this.add(south);
     }
